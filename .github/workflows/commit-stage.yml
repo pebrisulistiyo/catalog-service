@@ -33,4 +33,4 @@ jobs:
       - name: "Build, unit test and integration tests"
         run: |
           chmod +x mvnw
-          ./mvnw build
+          ./mvnw test compile
