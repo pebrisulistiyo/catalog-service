@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: catalog-service
+
+server:
+  port: 9001
+  tomcat:
+    connection-timeout: 2s # set connection timeout
+    keep-alive-timeout: 15s # how long your connection open until get new connection again
+    threads:
+      max: 50 # for local environment
+      min-spare: 5
