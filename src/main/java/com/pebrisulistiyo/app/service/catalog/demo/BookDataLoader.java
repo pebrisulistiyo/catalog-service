@@ -23,8 +23,8 @@ public class BookDataLoader {
     public void loadBookTestData() {
         LOG.info("Starting loading test data");
         bookRepository.deleteAll();
-        var book1 =  Book.of("1234567891", "Title 1", "Author", 1.1);
-        var book2 = Book.of("1234567892", "Title 2", "Author 2", 5.1);
+        var book1 =  Book.of("1234567891", "Title 1", "Author", 1.1, "Manning");
+        var book2 = Book.of("1234567892", "Title 2", "Author 2", 5.1, "Manning");
 
         bookRepository.saveAll(List.of(book1, book2));
         LOG.info("Finished loading test data");

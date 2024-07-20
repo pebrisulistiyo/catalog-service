@@ -12,5 +12,16 @@ docker run -d \
   postgres:14.4
 ```
 ### Run Project
-`./mvnw spring-boot:run`
+```shell
+./mvnw spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=testdata"
+```
 
+### Run Integration Test
+```shell
+./mvnw test -Dtest="BookRepositoryJdbcTests"
+```
+
+### List port
+```shell 
+lsof -i :9001
+```
