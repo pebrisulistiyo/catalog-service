@@ -7,9 +7,13 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.logging.Logger;
+
 @Component
 @Profile("testdata")
 public class BookDataLoader {
+    private final Logger LOG = Logger.getLogger(getClass().getName());
     private final BookRepository bookRepository;
     public BookDataLoader(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
@@ -17,10 +21,12 @@ public class BookDataLoader {
 
     @EventListener(ApplicationReadyEvent.class)
     public void loadBookTestData() {
-        var book1 = new Book("1234567891", "Title 1", "Author", 1.1);
-        var book2 = new Book("1234567892", "Title 2", "Author 2", 5.1);
+        LOG.info("Starting loading test data");
+        bookRepository.deleteAll();
+        var book1 =  Book.of("1234567891", "Title 1", "Author", 1.1);
+        var book2 = Book.of("1234567892", "Title 2", "Author 2", 5.1);
 
-        bookRepository.save(book1);
-        bookRepository.save(book2);
+        bookRepository.saveAll(List.of(book1, book2));
+        LOG.info("Finished loading test data");
     }
 }
