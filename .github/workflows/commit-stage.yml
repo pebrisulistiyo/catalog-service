@@ -65,11 +65,11 @@ jobs:
           fail-build: false                                  ❸
           severity-cutoff: high
           acs-report-enable: true
-      - name: "Upload vulenrabilty report"
+      - name: "Upload vulnerability report"
         uses: github/codeql-action/upload-sarif@v2
         if: success() || failure()
         with:
-          sarif_file: ${{ steps.scan.output.sarif }}
+          sarif_file: ${{ steps.scan.outputs.sarif }}
       - name: "Log into container registry"
         uses: docker/login-action@v2
         with:
