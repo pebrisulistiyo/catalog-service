@@ -10,7 +10,7 @@ docker rm -fv book-postgres
 Create Network
 ```shell
 docker network create catalog-network
-docker ```
+```
 
 Create database
 ```shell
@@ -35,7 +35,7 @@ Run Docker Service for Catalog Project
 docker run -d \
   --name catalog-service \
   --net catalog-network \
-  -p 9001:9001
+  -p 9001:9001 \
   -e SPRING_DATASOURCE_URL=jdbc:postgresql://book-postgres:5432/bookdb_catalog \
   -e SPRING_PROFILES_ACTIVE=testdata \
   catalog-service
