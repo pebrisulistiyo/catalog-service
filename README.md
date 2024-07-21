@@ -40,6 +40,18 @@ docker run -d \
   -e SPRING_PROFILES_ACTIVE=testdata \
   catalog-service
 ```
+
+
+Build Image with buildpack and automatic push it to registry
+```shell
+./mvnw spring-boot:build-image \
+  -Ddocker.publishRegistry.username=<username> \
+  -Ddocker.publishRegistry.password=<token> \
+  -Ddocker.publishRegistry.url=ghcr.io \
+  -Dspring-boot.build-image.publish=true \
+  -Dspring-boot.build-image.imageName=ghcr.io/<username>/catalog-service:0.0.1
+```
+`mvn spring-boot:build-image -Dspring-boot.build-image.imageName=docker.example.com/library/my-app:v1 -Dspring-boot.build-image.publish=true`
 ### Run Project
 Run project with specific profile
 ```shell
