@@ -51,7 +51,17 @@ Build Image with buildpack and automatic push it to registry
   -Dspring-boot.build-image.publish=true \
   -Dspring-boot.build-image.imageName=ghcr.io/<username>/catalog-service:0.0.1
 ```
-`mvn spring-boot:build-image -Dspring-boot.build-image.imageName=docker.example.com/library/my-app:v1 -Dspring-boot.build-image.publish=true`
+
+Build Image Local without push to registry
+```shell
+./mvnw spring-boot:build-image -DskipTests -Dspring-boot.build-image.imageName=catalog-service
+```
+
+Load Image to minikube
+```shell
+minikube image load catalog-service --profile books
+```
+
 ### Run Project
 Run project with specific profile
 ```shell

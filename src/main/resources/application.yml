@@ -1,4 +1,6 @@
 spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
   application:
     name: catalog-service
   datasource:
@@ -36,6 +38,7 @@ server:
     threads:
       max: 50 # for local environment
       min-spare: 5
+  shutdown: graceful
 
 apps:
   greeting: "Welcome to the local book catalog"
