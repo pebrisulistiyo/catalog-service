@@ -9,7 +9,7 @@ env:
 
 jobs:
   build:
-    runs-on: ARM64
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout master
         uses: actions/checkout@v2
